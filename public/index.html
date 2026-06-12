@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewise Enterprise Growth Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="box">
+        <h2 style="margin: 0 0 6px 0;">Typewise LinkedIn Intent Center</h2>
+        <p class="subtitle">
+            Enter a lead's social post URL to generate custom outreach pipelines instantly.
+        </p>
+
+        <div class="input-container">
+            <input
+                type="text"
+                id="linkField"
+                placeholder="[https://www.linkedin.com/posts/](https://www.linkedin.com/posts/)..."
+            />
+            <button id="generateBtn">
+                Generate
+            </button>
+        </div>
+
+        <div id="status">
+            Processing core inference pipeline via Gemini...
+        </div>
+
+        <div class="result-zone" id="output">
+            
+            <div class="metrics-row">
+                <div class="metric-card">
+                    <div class="metric-label">Intent Score</div>
+                    <div class="metric-value score-priority" id="scoreOut">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Recommended Strategy</div>
+                    <div class="metric-value" id="actionOut" style="color: #38bdf8;">-</div>
+                </div>
+            </div>
+
+            <div class="pain-container">
+                <div class="metric-label" style="margin-bottom: 8px;">Identified Account Pain Points</div>
+                <div id="painsOut"></div>
+            </div>
+
+            <h4>🎯 AI PRE-DRAFTED COMMENT:</h4>
+            <div class="output-box" id="commentOut"></div>
+
+            <h4>✉️ STRATEGIC OUTBOUND DM:</h4>
+            <div class="output-box" id="dmOut"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
