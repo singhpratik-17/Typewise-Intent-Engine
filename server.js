@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -10,6 +11,11 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 app.use(express.json());
 app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 
 async function scrapeLinkedInPost(targetUrl) {
     try {
@@ -98,4 +104,10 @@ app.post('/api/analyze-post', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => console.log(`Backend server running on port ${PORT}`));
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Backend server running on port ${PORT}`);
+    });
+}
+
+module.exports = app;
